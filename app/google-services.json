@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "126208898941",
-    "firebase_url": "https://spaapp-11e93.firebaseio.com",
-    "project_id": "spaapp-11e93",
-    "storage_bucket": "spaapp-11e93.appspot.com"
+    "project_number": "102080921185",
+    "firebase_url": "https://fir-p-a-13576.firebaseio.com",
+    "project_id": "fir-p-a-13576",
+    "storage_bucket": "fir-p-a-13576.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:126208898941:android:40c03cd9442c80da",
+        "mobilesdk_app_id": "1:102080921185:android:40c03cd9442c80da",
         "android_client_info": {
           "package_name": "abhishek.dev.spa"
         }
       },
       "oauth_client": [
         {
-          "client_id": "126208898941-93otfhki94mha2j0hp4dneoibo4qfug9.apps.googleusercontent.com",
+          "client_id": "102080921185-shn9c9can8083ktc4vobfuvgfkga2gvs.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "abhishek.dev.spa",
@@ -23,20 +23,20 @@
           }
         },
         {
-          "client_id": "126208898941-uo127tq23h6hu3dm11u1aask60ust884.apps.googleusercontent.com",
+          "client_id": "102080921185-u927h5b6kk14fe4mc4mupp0adqc7oj3s.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCwrZ8E_ryKSNTJasyVOUJ9IsHbpfEg9_s"
+          "current_key": "AIzaSyBmY7A_XwDD-dC_v0XSZGuwcJeAJrGubXY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "126208898941-uo127tq23h6hu3dm11u1aask60ust884.apps.googleusercontent.com",
+              "client_id": "102080921185-u927h5b6kk14fe4mc4mupp0adqc7oj3s.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
