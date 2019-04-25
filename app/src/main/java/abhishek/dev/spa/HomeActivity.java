@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivity {
 
         //initialise
         userRef = FirebaseFirestore.getInstance().collection("User");
-       alertDialog = new SpotsDialog.Builder().setContext(this).build();
+        alertDialog = new SpotsDialog.Builder().setContext(this).build();
 
         //checking intent login is true enable full access
         //if login is false then shop to view services
@@ -62,7 +62,7 @@ public class HomeActivity extends AppCompatActivity {
             boolean isLogin = getIntent().getBooleanExtra(Common.IS_LOGIN,false);
             if(isLogin)
             {
-                 alertDialog.show();
+           //      alertDialog.show();
                 //to check user exist
                 AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
                     @Override
@@ -75,12 +75,20 @@ public class HomeActivity extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                             if(task.isSuccessful())
                                             {
-                                                DocumentSnapshot userSnapshot = task.getResult();
+                                                DocumentSnapshot userSnapShot = task.getResult();
 
-                                                if(!userSnapshot.exists()){
+                                                if(!userSnapShot.exists()){
+
                                                     showUpdateDialog(account.getPhoneNumber().toString());
 
                                                 }
+                                                else{
+                                                    //if user already available
+                                                    Common.currentUser = userSnapShot.toObject(User.class);
+                                                    bottomNavigationView.setSelectedItemId(R.id.home);
+                                                }
+                                                if(alertDialog.isShowing())
+                                                    alertDialog.dismiss();
                                             }
                                         }
                                     });
@@ -111,6 +119,8 @@ public class HomeActivity extends AppCompatActivity {
              return loadFragment(fragment);
             }
         });
+
+
     }
 
     private boolean loadFragment(Fragment fragment) {
@@ -126,7 +136,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void showUpdateDialog(final String phoneNumber) {
 
-       if(alertDialog.isShowing())
+        if(alertDialog.isShowing())
             alertDialog.dismiss();
 
 
@@ -144,13 +154,21 @@ public class HomeActivity extends AppCompatActivity {
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user = new User(et_name.getText().toString(),et_address.getText().toString(),phoneNumber);
+                final User user = new User(et_name.getText().toString(),et_address.getText().toString(),phoneNumber);
                 userRef.document(phoneNumber)
                         .set(user)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
+
                                 bottomSheetDialog.dismiss();
+
+                                if(alertDialog.isShowing())
+                                    alertDialog.dismiss();
+
+                                Common.currentUser = user;
+                                bottomNavigationView.setSelectedItemId(R.id.home);
+
                                 Toast.makeText(HomeActivity.this,"Thank You",Toast.LENGTH_SHORT).show();
 
                             }
